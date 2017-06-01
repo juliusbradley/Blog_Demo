@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<link href="bootstrap.css" rel="stylesheet">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+<script src="js/jquery-3.1.1.js"></script>
+<script src="js/bootstrap.js"></script>
+
+<style>
+
+    .jbb {
+        height: 60px;
+        length: 60px;
+
+    }
+
+
+.home{
+   height: 400px;
+   width: 500px;
+}
+
+
+</style>
+  <head>
+    <title>MyBlog</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <nav>
+      <nav class="navbar navbar-default navbar-fixed-top">
+          <div class="container">
+            <%= image_tag "jbblogo.png", class: "jbb"%>
+           <%= link_to 'Top Posts', root_path %>
+            |
+           <%= link_to 'New Post', new_post_path %>
+            |
+            <%= link_to 'All Posts', posts_path %>
+            |
+            <% if user_signed_in? %>
+        <span> Hello <%= current_user.first_name %>, </span>
+        <%= link_to 'Logout', sessions_path, method: :delete, data: {confirm: 'Logout?'} %>
+        |
+        <% else %>
+        <%= link_to 'Sign Up', new_user_path %>
+        |
+        <%= link_to 'Login', new_session_path %>
+        |
+        <% end %>
+
+          </div>
+      </nav>
+    </nav>
+    <div>
+    <% if flash[:notice] %>
+      <%= flash[:notice] %>
+    <% else %>
+      <%= flash[:alert] %>
+    <% end %>
+  </div>
+    <%= yield %>
+  </body>
+</html>
