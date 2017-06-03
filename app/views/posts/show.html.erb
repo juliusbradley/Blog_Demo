@@ -4,11 +4,16 @@
 <center>
 <h1><%= @post.title  %></h1>
 <h4><%= @post.body  %></h4>
+<h6> by: <%= @post.user.first_name %></h6>
 <br>
+
+
+<% if current_user == @post.user %>
 <%= link_to 'Edit', edit_post_path(@post) %>
 <%= link_to 'Delete', post_path(@post),
                       method: :delete,
                       data: { confirm: 'Are you sure?' } %>
+<% end %>
 <br><br><br>
 <%= form_for [@post, @comment] do |f| %>
 
@@ -24,9 +29,12 @@
 
 <% @post.comments.each do |comment| %>
 <h3><%= comment.body %></h3>
+<h6> by: <%= comment.user.first_name %></h6>
+<% if current_user == comment.user  %>
 <%= link_to 'Edit', edit_post_comment_path(@post,comment) %>
 <%= link_to 'Delete', post_comment_path(@post,comment),
                        method: :delete,
                        data: {confirm: 'Are you sure?'} %>
+<% end %>
 <% end %>
 </center>

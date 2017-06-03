@@ -1,7 +1,5 @@
 class PostsController < ApplicationController
-
-
-
+before_action :authenticate_user!, except: [:index, :home]
   def index
     @posts = Post.all
   end
@@ -16,8 +14,8 @@ class PostsController < ApplicationController
 
  def create
   @post = Post.new post_params
+  @post.user = current_user
     if @post.save
-      @post.user = current_user
      redirect_to post_path(@post), notice: "created a post"
     else
       render :new
@@ -25,8 +23,8 @@ class PostsController < ApplicationController
  end
 
  def show
-   @post = Post.find params[:id]
    @comment = Comment.new
+   @post = Post.find params[:id]
  end
 
 def edit

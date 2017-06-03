@@ -1,66 +1,49 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset="utf-8">
-    <title>My Blog</title>
-</head>
+    <head>
+        <meta charset="utf-8">
+        <title>My Blog</title>
+    </head>
 
-<body>
-    <br><br><br>
-    <center>  <h1> Welcome to my blog </h1> </center>
-       <div class="row">
-    <div class="col-md-6"><%= image_tag "saltflats.jpg", height: 500; %>
+    <body>
+        <br><br><br>
+        <center>
+            <h1>
+                Welcome to my blog
+            </h1>
+        </center>
+        <div class="row">
+            <div class="col-md-6"><%= image_tag "saltflats.jpg", height: 500; %>
 
-</div>
-  <div class="col-md-6">
-      Dj jazzy jeff jeans body piercings enrique iglesias, rocko’s modern life home improvement wallet chains playstation
-      you’ve got mail. Gangsta rap giga pets leopard print saved by the bell kool-aid man.
-      Teenage mutant ninja turtles alta vista light up sneakers move it football head trl
+            </div>
+            <div class="col-md-6">
+                Dj jazzy jeff jeans body piercings enrique iglesias, rocko’s modern life home improvement wallet chains playstation you’ve got mail. Gangsta rap giga pets leopard print saved by the bell kool-aid man. Teenage mutant ninja turtles alta vista light up
+                sneakers move it football head trl Headbands geo metro space jam america online flip flops. The rachel haircut digital pets patti mayonnaise skidz and zubas beepers. Steve urkel independence day rad hootie and the blowfish beanie babies flat tops. Dj
+                jazzy jeff jeans body piercings enrique iglesias, rocko’s modern life home improvement wallet chains playstation you’ve got mail. Gangsta rap giga pets leopard print saved by the bell kool-aid man. Teenage mutant ninja turtles alta vista light up
+                sneakers move it football head trl Headbands geo metro space jam america online flip flops. The rachel haircut digital pets patti mayonnaise skidz and zubas beepers. Steve urkel independence day rad hootie and the blowfish beanie babies flat tops.
 
-      Headbands geo metro space jam america online flip flops. The rachel
-      haircut digital pets patti mayonnaise skidz and zubas beepers.
-      Steve urkel independence day rad hootie and the blowfish beanie babies flat tops.
-      Dj jazzy jeff jeans body piercings enrique iglesias, rocko’s modern life home improvement wallet chains playstation
-      you’ve got mail. Gangsta rap giga pets leopard print saved by the bell kool-aid man.
-      Teenage mutant ninja turtles alta vista light up sneakers move it football head trl
+            </div>
+        </div>
+        <br><br>
+        <center>
+            <h1>
+                Top Posts</h1>
+        </center>
 
-      Headbands geo metro space jam america online flip flops. The rachel
-      haircut digital pets patti mayonnaise skidz and zubas beepers.
-      Steve urkel independence day rad hootie and the blowfish beanie babies flat tops.
-
-</div>
-</div>
-<br><br>
-    <center><h1> Top Posts</h1> </center>
-  </div>
-  <%= @posts.each do |post| %>
-  <% x = rand(1..7) %>
-<div class="row">
-            <div class="col-md-4"><%= image_tag "pic#{x}.jpg", class: "home"%>
+    <% @posts.each do |post| %>
+    <% x = rand(1..7) %>
+    <div class="row">
+        <div class="col-md-4"><%= image_tag "pic#{x}.jpg", class: "home"%>
 
             <br><br>
             <h1><%= link_to post.title, post_path(post) %></h1>
+            <h6>
+                by:
+                <%= post.user.first_name %></h6>
 
+            <br><br>
 
-          <br><br>
-
-          </div>
-<% end %>
-</div>
-</div>
         </div>
-</body>
-</body>
-<footer>
-
-<h1>
-  <center>
-<i class="fa fa-facebook" aria-hidden="true"></i>
-<i class="fa fa-twitter" aria-hidden="true"></i>
-<i class="fa fa-instagram" aria-hidden="true"></i>
-<i class="fa fa-medium" aria-hidden="true"></i>
-</center>
-</h1>
-
-</footer>
+        <% end %>
+    </div>
 </html>
